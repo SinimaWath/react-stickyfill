@@ -1,5 +1,5 @@
 {
-  "name": "react-stickyfill",
+  "name": "react-stickyfill-fork",
   "version": "0.2.3",
   "description": "React wrapper for Stickyfill library",
   "main": "lib/index.js",
@@ -38,12 +38,12 @@
     "eslint-loader": "^1.7.1",
     "eslint-plugin-react": "^7.0.1",
     "postcss-loader": "^2.0.5",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
+    "react": "16.4.1",
+    "react-dom": "16.4.1",
     "webpack": "^2.6.0"
   },
   "dependencies": {
-    "Stickyfill": "git+https://github.com/seleckis/stickyfill.git",
+    "stickyfilljs-fork": "2.1.0-fix-scroll-container-6",
     "prop-types": "^15.5.10"
   }
 }

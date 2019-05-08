@@ -20,56 +20,31 @@ class App extends Component {
 			stickerActive: false,
 			height: false
 		};
+
+		this.myRef = React.createRef();
 	}
+
 	componentDidMount() {
-		window.addEventListener('resize', this.changeState);
-		this.changeState();
+		this.cont = document.querySelector('.overlay');
+		console.log(this.cont);
 	}
-	componentWillUnmount() {
-		window.removeEventListener('resize', this.changeState);
-	}
-	mediaMatch = (media) => {
-		return window.matchMedia(media).matches;
-	}
-	changeState = () => {
-		this.setState({
-			stickerActive: this.mediaMatch(this.props.media),
-			height: this.child2.offsetHeight
-		});
-	}
+
 	render() {
 		return (
-			<div className="root">
-				<div className="section before">
-					<h2>Scroll down</h2>
+			<React.Fragment>
+				<div className={'header'}/>
+				<div className={'overlay'} ref={this.myRef}>
+					<div className={'block'}/>
+					<div className={'list'}>
+						<Sticker
+							forcePolyfill={true}
+							scrollContainer={'.overlay'}
+						>
+							<div className={'sticky'}/>
+						</Sticker>
+					</div>
 				</div>
-				<div className="section parent cf">
-					<Sticker>
-						<div className="child">
-							<h2>Sticky box</h2>
-						</div>
-					</Sticker>
-				</div>
-				<div className="section parent2 cf">
-					<Sticker media={this.props.media} forceUpdate={this.state.height}>
-						<div className={ !this.state.stickerActive ? "child2" : "child2-active" } ref={(r) => this.child2 = r}>
-							<h2>Sticky box with media</h2>
-							<p className="note">
-								works only on <span className="media">{this.props.media}</span>
-								because of media prop passed to Sticker component
-							</p>
-						</div>
-					</Sticker>
-				</div>
-				<div className="section parent3 cf">
-					<Sticker className="child3">
-						<Comp />
-					</Sticker>
-				</div>
-				<div className="section after">
-					<h2>Scroll back</h2>
-				</div>
-			</div>
+			</React.Fragment>
 		);
 	}
 }

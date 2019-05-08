@@ -5,106 +5,39 @@
 	<title>react-stickyfill</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style>
-		body{
-			margin: 0;
-			text-align: center;
-			font-family: helvetica, arial, sans-serif;
-			color: #fff;
+		body {
+			font-family: sans-serif;
 		}
-		.cf:before,
-		.cf:after {
-		    content: " ";
-		    display: table;
+
+		#app {
+			overflow: hidden;
 		}
-		.cf:after {
-			clear: both;
+
+		.overlay {
+			overflow: auto;
+			height: 500px;
 		}
-		h2{
-			text-transform: uppercase;
-			font-size: 50px;
-			letter-spacing: 3px;
-			font-weight: bold;
+
+		.block {
+			height: 100px;
+			background-color: black;
 		}
-		.section{
-			height: 100vh;
+
+		.header {
+			background-color: blue;
+			height: 100px;
+			position: relative;
 		}
-		.before, .after{
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-		.before{
-			background-color: #BB3101;
-		}
-		.parent{
-			background-color: #383C44;
-			height: 200vh;
-		}
-		.parent2{
-			background-color: #242930;
-			height: 200vh;
-		}
-		.parent3{
-			background-color: #444950;
-			height: 200vh;
-		}
-		.after {
-			background-color: #007DEA;
-		}
-		.child,
-		.child2, .child2-active,
-		.child3{
-			position: static;
-			top: 50px;
-			margin: 50px;
-			padding: 30px;
-			border-radius: 10px;
-			font-size: 25px;
-			background-color: #EA7C00;
-		}
-		.child, .child2-active, .child3{
-			position: -webkit-sticky;
+
+		.sticky {
+			top: 0;
 			position: sticky;
-			background-color: #2BBA00;
+			height: 50px;
+			background-color: red;
 		}
-		.note{
-			font-size: 20px;
-			line-height: 1.5;
-			text-transform: none;
-			font-weight: 100;
-		}
-		.media{
-			font-family: monospace;
-			display: block;
-			background-color: #1B9A00;
-			padding: 10px 5px;
-			margin: 10px 0;
-			font-size: 16px;
-		}
-		.child2 .media{
-			background-color: #CA5C00;
-		}
-		@media screen and (max-width: 767px) and (orientation: portrait), screen and (max-width: 1023px) and (orientation: landscape) {
-			h2{
-				font-size: 30px;
-				margin: .5em 0;
-			}
-			.child,
-			.child2, .child2-active{
-				position: static;
-				top: 30px;
-				margin: 30px;
-				padding: 20px;
-				border-radius: 5px;
-				font-size: 18px;
-			}
-			.note{
-				font-size: 16px;
-				line-height: 1.2;
-			}
-			.media {
-				font-size: 14px;
-			}
+
+		.list {
+			height: 2000px;
 		}
 	</style>
 </head>

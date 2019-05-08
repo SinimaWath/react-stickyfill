@@ -1,75 +1,100 @@
-/*global Stickyfill */
 import React, {Component} from "react";
 import PropTypes from 'prop-types';
 import ReactDOM from "react-dom";
-import 'Stickyfill';
+import Stickyfill from 'stickyfilljs-fork/dist/stickyfill.es6';
 
 export default class Sticker extends Component {
 	static propTypes = {
-	    media: PropTypes.string,
+		forcePolyfill: PropTypes.bool,
+		scrollContainer: PropTypes.string,
 		children: PropTypes.oneOfType([
 			PropTypes.element,
 			PropTypes.func
 		])
 	};
+
 	constructor(props) {
 		super(props);
+
+		console.log(props.scrollContainer);
 		this.state = {
 			isSticky: false
 		};
 	}
-	mediaMatch = (media) => {
-		return window && window.matchMedia(media).matches;
-	}
-	sticky = (stick) => {
+
+	sticky(stick) {
 		Stickyfill.add(stick);
 		this.setState({
 			isSticky: true
 		});
 	}
-	unsticky = (stick) => {
+
+	unsticky(stick) {
 		Stickyfill.remove(stick);
 		this.setState({
 			isSticky: false
 		});
 	}
-	update = () => {
-		Stickyfill.rebuild();
-	}
-	handleResize = () => {
-		if(this.mediaMatch(this.props.media)){
-			if(!this.state.isSticky){
-				this.sticky(this.stick);
-			}
-		} else if(this.state.isSticky){
-			this.unsticky(this.stick);
-		}
-	}
+
 	componentDidMount(){
+		const {
+			scrollContainerSelector = null,
+			forcePolyfill = false,
+		} = this.props;
+
 		this.stick = ReactDOM.findDOMNode(this);
-		if(this.props.media){
-			window && window.addEventListener('resize', this.handleResize);
-			this.handleResize();
-		} else {
-			this.sticky(this.stick);
+
+		const scrollContainer = document.querySelector(scrollContainerSelector);
+
+		if (scrollContainer) {
+			createScrollable(scrollContainer);
+			const offset = getOffsetTop(scrollContainer);
+
+			Stickyfill.setTopOffset(offset);
+			Stickyfill.setScrollContainer(scrollContainer);
 		}
+
+		if (forcePolyfill) {
+			Stickyfill.forceSticky();
+		}
+
+		this.sticky(this.stick);
 	}
+
 	componentWillUnmount() {
-		if(this.props.media){
-			window && window.removeEventListener('resize', this.handleResize);
-		}
 		this.unsticky(this.stick);
 	}
-	componentWillReceiveProps(nextProps){
-		if(nextProps.forceUpdate !== this.props.forceUpdate){
-			this.update();
-		}
-	}
-	componentDidUpdate(){
-		this.update();
-	}
+
 	render() {
 		let { children, ...otherProps } = this.props;
+
 		return typeof children.type === "function" ? React.cloneElement(this.props.children, { ...otherProps }) : children;
+	}
+
+}
+
+function createScrollable(el) {
+	if (!el) {
+		return;
+	}
+
+	if (el.pageYOffset && el.pageXOffset) {
+		Object.defineProperty(el, 'scrollTop', {
+			get() {
+				return this.pageYOffset;
+			}
+		});
+
+		Object.defineProperty(el, 'scrollLeft', {
+			get() {
+				return this.pageXOffset;
+			}
+		});
+	}
+}
+
+function getOffsetTop(el) {
+	if (el && (el.offsetTop || el.offsetTop === 0)) {
+		return el.offsetTop;
 	}
 }
