@@ -1,6 +1,6 @@
 {
   "name": "react-stickyfill-fork",
-  "version": "0.2.3-fix-scroll-container",
+  "version": "0.2.3-fix-scroll-container-2",
   "description": "React wrapper for Stickyfill library",
   "main": "lib/index.js",
   "scripts": {
