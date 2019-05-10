@@ -1,18 +1,8 @@
 import React, {Component} from "react";
-import PropTypes from 'prop-types';
 import ReactDOM from "react-dom";
-import Stickyfill from 'stickyfilljs-fork;
+import Stickyfill from 'stickyfilljs-fork';
 
 export default class Sticker extends Component {
-	static propTypes = {
-		forcePolyfill: PropTypes.bool,
-		scrollContainer: PropTypes.string,
-		children: PropTypes.oneOfType([
-			PropTypes.element,
-			PropTypes.func
-		])
-	};
-
 	constructor(props) {
 		super(props);
 
