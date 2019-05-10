@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import PropTypes from 'prop-types';
 import ReactDOM from "react-dom";
-import Stickyfill from 'stickyfilljs-fork/dist/stickyfill.es6';
+import Stickyfill from 'stickyfilljs-fork;
 
 export default class Sticker extends Component {
 	static propTypes = {
