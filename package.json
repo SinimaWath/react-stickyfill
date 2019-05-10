@@ -2,7 +2,7 @@
   "name": "react-stickyfill-fork",
   "version": "0.2.3-fix-scroll-container-4",
   "description": "React wrapper for Stickyfill library",
-  "main": "lib/index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
