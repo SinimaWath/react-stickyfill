@@ -38,9 +38,6 @@ export default class Sticker extends Component {
 
 		if (scrollContainer) {
 			createScrollable(scrollContainer);
-			const offset = getOffsetTop(scrollContainer);
-
-			Stickyfill.setTopOffset(offset);
 			Stickyfill.setScrollContainer(scrollContainer);
 		}
 
