@@ -2,7 +2,7 @@
   "name": "react-stickyfill-fork",
   "version": "0.2.3-fix-scroll-container-5",
   "description": "React wrapper for Stickyfill library",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -39,10 +39,10 @@
     "postcss-loader": "^2.0.5",
     "react": "16.4.1",
     "react-dom": "16.4.1",
-    "webpack": "^2.6.0"
+    "webpack": "4.31.0"
   },
   "dependencies": {
-    "stickyfilljs-fork": "2.1.0-fix-scroll-container-8",
+    "stickyfilljs-fork": "2.1.0-fix-scroll-container-9",
     "prop-types": "^15.5.10"
   }
 }
