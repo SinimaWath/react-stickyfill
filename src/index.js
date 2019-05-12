@@ -6,7 +6,6 @@ export default class Sticker extends Component {
 	constructor(props) {
 		super(props);
 
-		console.log(props.scrollContainer);
 		this.state = {
 			isSticky: false
 		};
@@ -77,11 +76,5 @@ function createScrollable(el) {
 				return this.pageXOffset;
 			}
 		});
-	}
-}
-
-function getOffsetTop(el) {
-	if (el && (el.offsetTop || el.offsetTop === 0)) {
-		return el.offsetTop;
 	}
 }

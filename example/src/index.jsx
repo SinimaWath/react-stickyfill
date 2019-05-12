@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import Sticker from '../../lib/';
+import Sticker from '../../dist/bundle';
 
 class Comp extends Component {
 	render() {
@@ -11,9 +11,6 @@ class Comp extends Component {
 }
 
 class App extends Component {
-	static defaultProps = {
-		media: "(max-width: 767px) and (orientation: portrait), (max-width: 1023px) and (orientation: landscape)"
-	};
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -31,21 +28,19 @@ class App extends Component {
 
 	render() {
 		return (
-			<React.Fragment>
-				<div className={'header'}/>
-				<div className={'overlay'} ref={this.myRef}>
-					<div className={'block'}/>
-					<div className={'list'}>
-						<Sticker
-							forcePolyfill={true}
-							scrollContainer={'.overlay'}
-						>
-							<div className={'sticky'}/>
-						</Sticker>
-					</div>
+			<div className="root">
+				<div className="section before">
+					<h2>Scroll down</h2>
 				</div>
-			</React.Fragment>
-		);
+				<div className="section parent cf">
+					<Sticker>
+						<div className="child">
+							<h2>Sticky box</h2>
+						</div>
+					</Sticker>
+				</div>
+			</div>
+		)
 	}
 }
 

@@ -4,7 +4,9 @@
   "description": "React wrapper for Stickyfill library",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "rollup -c",
+    "test-build": "rollup -c && webpack"
   },
   "repository": {
     "type": "git",
@@ -39,10 +41,12 @@
     "postcss-loader": "^2.0.5",
     "react": "16.4.1",
     "react-dom": "16.4.1",
+    "rollup-plugin-node-resolve": "^4.2.4",
     "webpack": "^2.6.0"
   },
   "dependencies": {
-    "stickyfilljs-fork": "2.1.0-fix-scroll-container-10",
-    "prop-types": "^15.5.10"
+    "prop-types": "^15.5.10",
+    "rollup": "^1.11.3",
+    "stickyfilljs-fork": "2.1.0-fix-scroll-container-10"
   }
 }
