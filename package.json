@@ -44,6 +44,6 @@
     "rollup-plugin-node-resolve": "^4.2.4",
     "webpack": "^2.6.0",
     "rollup": "^1.11.3",
-    "stickyfilljs-fork": "2.1.0-fix-scroll-container-12"
+    "stickyfilljs-fork": "2.1.0-fix-scroll-container-13"
   }
 }
